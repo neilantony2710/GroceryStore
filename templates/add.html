@@ -1,0 +1,49 @@
+{% extends "/common.html" %}
+
+{% block title %}
+Shop!
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1>Add a Product</h1>
+</div>
+<div class="container">
+    <button type="button" class="btn btn-default"><a href='/'>Home</a></button>
+    <button type="button" class="btn btn-default"><a href='/shop'>Shop</a></button>
+
+    <div style="margin-top: 10px;">
+        <form action='/addProduct' method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" name="title" placeholder="Title" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="description" placeholder="Description" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number" name="price" placeholder="$Price" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="unit" placeholder="Unit" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number" name="ql" placeholder="Quantity Limit" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="img" placeholder="Image URL" class="form-control">
+                </div>
+            </div>
+            <div style="text-align: center">
+                <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 20px">
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

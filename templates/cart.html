@@ -1,0 +1,40 @@
+{% extends "/common.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+
+        <h1>Cart</h1>
+
+</div>
+
+<div class="container">
+<div>
+<button type="button" class="btn btn-default"><a href = '/shop'>Continue Shopping</a></button>
+<button type="button" class="btn btn-default"><a href = '/'>Home</a></button>
+</div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Amount Bought</td>
+            <td>Item Price</td>
+            <td>Subtotal</td>
+        </tr>
+        {% for l in y %}
+
+        <tr>
+            <td>{{l['title']}}</td>
+            <td>{{l['description']}}</td>
+            <td>{{l['itemnum']}}</td>
+            <td>${{l['price']}}</td>
+            <td>${{l['subtotal']}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td class="text-right" colspan="5">Grand Total: ${{total}}</td>
+        </tr>
+    </table>
+    <a href="/clearcart">Clear Cart</a>
+</div>
+
+{% endblock %}

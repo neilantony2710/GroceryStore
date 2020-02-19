@@ -1,0 +1,60 @@
+{% extends "/common.html" %}
+
+{% block title %}
+Shop!
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1>Shop!</h1>
+</div>
+
+
+<div class="container">
+    <button type="button" class="btn btn-default"  style="margin-bottom: 20px"><a href='/'>Home</a></button>
+    <button type="button" class="btn btn-default" style="margin-bottom: 20px"><a href='/addProduct'>Add a Product</a></button>
+    <form method="POST">
+        <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+            {% for b in y %}
+
+            <div class="card">
+                <div class="card-body">
+                    <img src={{b['img']}}>
+                    <h5 class="card-title">{{ b['title'] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{b['price']}}$/{{b['unit']}} Quantity Limit:
+                        {{b['ql']}}</h6>
+                    <p class="card-text">{{b['description']}}.</p>
+
+                    <select name="{{b['_id']}}" class="form-control">
+                        <option value="0">None</option>
+                        {% for c in range(1,1+b['ql']|int) %}
+
+                        <option value={{c}}>{{c}}</option>
+                        {% endfor %}
+                    </select>
+
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <input type="submit" class="btn btn-danger">
+    </form>
+</div>
+
+{% endblock %}
+{% block styles %}
+{{ super() }}
+<style>
+    .card {border: 2px solid black; margin-right: 15px; margin-bottom: 15px; padding: 15px}
+    img {height: 125px; width: 125px}
+
+
+
+
+
+</style>
+
+{% endblock %}
